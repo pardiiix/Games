@@ -12,39 +12,39 @@ x=y=None
 matrix=[]
 player=None
 win=None
-def initialize():
-    global player, win, matrix
-    player=1
-    win=False
-    matrix=[[0,0,0] for i in range(3)]
-def print_emptyboard():
-    for i in range(3):
-        print('-------')
+def initialize(): #This is the first function of the code
+    global player, win, matrix #globalizing to be able to use later on
+    player=1 #player 1 starts
+    win=False #at first there is no winner
+    matrix=[[0,0,0] for i in range(3)] #an empty square matrix with a size of 3
+def print_emptyboard(): #prints the empty board with no components
+    for i in range(3): #three rows and columns are created
+        print('-------') 
         row='| | | |'
         print(row)
-    print('-------')
-    print('Player 1')
-def print_board():
+    print('-------') #prints the 4th line
+    print('Player 1') #to indicate that the game starts with player 1
+def print_board(): #prints the board after a component is given
     global matrix
     for i in range(len(matrix)):
-        print('-------')
-        row='|'
+        print('-------') #the first line
+        row='|' #the first border
         for j in range(len(matrix[i])):
-            if matrix[i][j]==0:
-                row+=' |'
-            elif matrix[i][j]==2:
+            if matrix[i][j]==0: #if no input has been given yet
+                row+=' |' #an empty space and it's border should be added to row
+            elif matrix[i][j]==2: #if player 2 enters a coordinate
                 row+='O|'
             else:
                 row+='X|'
-        print(row)
+        print(row) # prints a completed row with X's and O's
     print('-------')  
 def check_winner():
     global matrix,win
     for i in range(len(matrix)):
         s1=s2=d1=d2=1
         for j in range(len(matrix[i])):
-            s1*=matrix[i][j]
-            s2*=matrix[j][i]
+            s1*=matrix[i][j] #s1 is the multiplication of a row
+            s2*=matrix[j][i] #s2 is the multiplication of a column
         if s1==1 or s1==8 or s2==1 or s2==8:
             print('player',player, 'wins')
             win=True
