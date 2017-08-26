@@ -8,6 +8,7 @@ E-mail: pardis.ranjbar@gmail.com
 # This is a code of a Tic-Tac-Toe game.
 #==============================================================================
 """
+import ipdb
 x=y=None
 matrix=[]
 player=None
@@ -46,15 +47,17 @@ def check_winner():
             s1*=matrix[i][j] #s1 is the multiplication of a row
             s2*=matrix[j][i] #s2 is the multiplication of a column
         if s1==1 or s1==8 or s2==1 or s2==8:
+            ipdb.set_trace()
             print('player',player, 'wins')
             win=True
     for i in range (len(matrix)):
         for j in range(len(matrix)):
             if i==j:
                 d1*=matrix[i][j] 
-            elif i+j==2:
+            if i+j==2:
                 d2*=matrix[i][j]
     if d1==1 or d1==8 or d2==1 or d2==8:
+            ipdb.set_trace()
             print('player',player, 'wins')
             win=True
 def select_place():
