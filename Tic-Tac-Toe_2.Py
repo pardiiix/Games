@@ -65,7 +65,8 @@ class Game(object):
                     return False
         return True
         print('Game over')
-    def winner(self):
+    @property
+    def won(self):
         return self.win
     def switch_player(self):
         self.player=2 if self.player==1 else 1
@@ -73,7 +74,7 @@ class Game(object):
 
 game = Game()
 game.print_emptyboard()
-while not game.boardisfull() and not game.winner():
+while not game.boardisfull() and not game.won:
     game.select_place()
     game.set_selected_place()
     game.print_board()
