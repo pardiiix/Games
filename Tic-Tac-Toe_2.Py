@@ -73,11 +73,10 @@ class Game(object):
 
 game = Game()
 game.print_emptyboard()
-while True:
-    while not game.boardisfull() and not game.winner():
-        game.select_place()
-        game.set_selected_place()
-        game.print_board()
-        game.check_winner()
-        game.switch_player()
+while not game.boardisfull() and not game.winner():
+    game.select_place()
+    game.set_selected_place()
+    game.print_board()
+    game.check_winner()
+    game.switch_player()
 print('Game Over!\n')
